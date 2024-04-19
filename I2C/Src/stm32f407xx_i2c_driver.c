@@ -6,7 +6,16 @@
  */
 #include "stm32f407xx_i2c_driver.h"
 
-uint32_t
+uint32_t RCC_GetPCLK1Value(void){
+	uint32_t pclk1;
+	uint8_t clksrc;
+
+	clksrc = ((RRC->CFGR >> 2) & 0x3);
+
+	if(clksrc == 0){
+		SystemClk = 16000000;
+	}
+}
 
 void I2C_PeripheralControl(I2C_RegDef_t *pI2Cx, uint8_t EnOrDi)
 {
